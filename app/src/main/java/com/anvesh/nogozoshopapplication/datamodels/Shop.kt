@@ -1,19 +1,21 @@
 package com.anvesh.nogozoshopapplication.datamodels
 
 import com.google.firebase.database.IgnoreExtraProperties
+import com.google.gson.annotations.SerializedName
 
-@IgnoreExtraProperties
+//@IgnoreExtraProperties
 class Shop {
+    @SerializedName("shopName")
     lateinit var shopName: String
-
+    @SerializedName("shopId")
     lateinit var shopId: String
-
+    @SerializedName("imageUrl")
     var imageUrl: String? = null
-
+    @SerializedName("shopAddress")
     var shopAddress: String? = null
-
+    @SerializedName("shopCurrentStatus")
     var shopCurrentStatus: String? = null
-
+    @SerializedName("shopAreaId")
     var shopAreaId: String? = "-1"
 
     constructor(shopName: String, shopId: String, imageUrl: String?,shopAddress: String?, shopCurrentStatus: String?, shopAreaId: String?){

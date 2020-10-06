@@ -1,19 +1,31 @@
 package com.anvesh.nogozoshopapplication.datamodels
 
 import com.google.firebase.database.IgnoreExtraProperties
+import com.google.gson.annotations.SerializedName
 
-@IgnoreExtraProperties
+//@IgnoreExtraProperties
 data class CustomerProfile(
+    @SerializedName("name")
     var name: String? = "",
+    @SerializedName("email")
     var email: String? = "",
+    @SerializedName("phone")
     var phone: String? = "",
+    @SerializedName("profilelevel")
     var profilelevel: String? = "",
+    @SerializedName("shopname")
     var shopname: String? = "",
+    @SerializedName("cityname")
     var cityname: String? = "",
+    @SerializedName("cityid")
     var cityid: String? = "",
+    @SerializedName("pincode")
     var pincode: String? = "",
+    @SerializedName("areaname")
     var areaname: String? = "",
+    @SerializedName("areaid")
     var areaid: String? = "",
+    @SerializedName("address")
     var address: String? = ""){
 
     constructor(email: String, profilelevel: String) : this() {
