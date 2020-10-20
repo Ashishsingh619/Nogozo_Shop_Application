@@ -7,13 +7,13 @@ class OrderByStatus : Comparator<Order> {
         if (o1 == null || o2 == null)
             return 0
         if (o1.status != "0" && o2.status != "0") {
-            if (o1.status.compareTo(o2.status) == 0)
-                return o2.datetime.compareTo(o1.datetime)
-            return o1.status.compareTo(o2.status)
+            //if (o1.status.compareTo(o2.status) == 0)
+            //   return o1.status.compareTo(o2.status)
+            return o2.datetime.compareTo(o1.datetime)
         } else {
-            if (o1.status.compareTo(o2.status) == 0)
-                return o1.datetime.compareTo(o2.datetime)
-            return o1.status.compareTo(o2.status)
+            // if (o1.status.compareTo(o2.status) == 0)
+            //   return o1.status.compareTo(o2.status)
+            return o1.datetime.compareTo(o2.datetime)
         }
     }
 }

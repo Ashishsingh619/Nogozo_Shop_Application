@@ -1,5 +1,6 @@
 package com.anvesh.nogozoshopapplication.ui.inventory.editinventory
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,10 @@ class ItemGroupListAdapter: BaseAdapter() {
         }else{
             holder = convertView.tag as AreaListAdapter.ViewHolder
             holder.name.text = filteredList[position].groupName
+            if(position==filteredList.size-1) {
+                holder.name.setBackgroundColor(Color.parseColor("#3367A6"))
+                holder.name.setTextColor(Color.WHITE)
+            }
             convertView
         }
     }

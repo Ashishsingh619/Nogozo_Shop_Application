@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "716443204242-cm9323pddojs73mp13rclve8pqsvoap6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anvesh.nogozocustomerapplication",
+            "certificate_hash": "eb553f1a1cce49ac8be63097726267f9bfd20e43"
+          }
+        },
+        {
+          "client_id": "716443204242-db8bro4lrsgh7dj8e9ghbh1elo1ql2lp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anvesh.nogozocustomerapplication",
+            "certificate_hash": "95a322b0daae1e18adbf8617dc517ff59e764208"
+          }
+        },
+        {
           "client_id": "716443204242-vjgqt3i4rp2v5eq9k3l1433jq2ppo8sj.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -43,6 +59,67 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "716443204242-0jilbefugvdh73jvl4j8erbva8un4vcg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anvesh.nogozoshopapplication",
+            "certificate_hash": "eb553f1a1cce49ac8be63097726267f9bfd20e43"
+          }
+        },
+        {
+          "client_id": "716443204242-t22obtkcboa94dd06dhq0m6vpqj1pv6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anvesh.nogozoshopapplication",
+            "certificate_hash": "08f5124743a7b70f842547d41dae2bcfcf931244"
+          }
+        },
+        {
+          "client_id": "716443204242-0h87inmp9rfkiasp3cmomj9ipaeile3l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anvesh.nogozoshopapplication",
+            "certificate_hash": "95a322b0daae1e18adbf8617dc517ff59e764208"
+          }
+        },
+        {
+          "client_id": "716443204242-vjgqt3i4rp2v5eq9k3l1433jq2ppo8sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5_0KYr--zKVXj64RJYjZzlioTC_Slaxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716443204242-9a958k4eqs44am156ggg3tjlp31a9958.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716443204242:android:c206898798f8ead711444b",
+        "android_client_info": {
+          "package_name": "com.example.abcd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716443204242-pk515tef0tnmf5tnl92q2s5ki41dj4j2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abcd",
+            "certificate_hash": "eb553f1a1cce49ac8be63097726267f9bfd20e43"
+          }
+        },
         {
           "client_id": "716443204242-vjgqt3i4rp2v5eq9k3l1433jq2ppo8sj.apps.googleusercontent.com",
           "client_type": 3

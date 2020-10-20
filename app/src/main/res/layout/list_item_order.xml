@@ -193,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"
@@ -215,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"

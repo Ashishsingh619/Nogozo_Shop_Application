@@ -1,9 +1,12 @@
 package com.anvesh.nogozoshopapplication.ui.inventory.editinventory
 
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.SearchView
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.anvesh.nogozoshopapplication.R
@@ -24,6 +28,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
@@ -39,7 +45,7 @@ class EditInventoryFragment(
 
     private lateinit var itemGroupSpinner: TextView
     private lateinit var itemGroupCard: CardView
-
+    private lateinit var btn_deleteItem:Button
     private lateinit var itemName: TextInputEditText
     private lateinit var itemPrice: TextInputEditText
     private lateinit var itemMRP: TextInputEditText
@@ -75,6 +81,7 @@ class EditInventoryFragment(
         itemGroupSpinner.setOnClickListener(this)
         imageButton = view.findViewById(R.id.editinventory_imagebutton)
         imageButton.setOnClickListener(this)
+        btn_deleteItem=view.findViewById(R.id.btn_deleteItem)
         done = view.findViewById(R.id.editinventory_done)
         done.setOnClickListener(this)
 
@@ -112,6 +119,37 @@ class EditInventoryFragment(
             .load(imageRef)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(imageView)
+        btn_deleteItem.visibility=View.VISIBLE
+        btn_deleteItem.setOnClickListener {
+            val dialogBuilder = AlertDialog.Builder(context)
+            dialogBuilder.setMessage("Are you sure to delete this item?")
+                .setCancelable(false)
+                .setPositiveButton("YES", DialogInterface.OnClickListener {
+                        dialog, id ->
+                    FirebaseDatabase.getInstance().getReference("items").child(FirebaseAuth.getInstance().uid as String).child(item.itemId as String).removeValue().addOnCompleteListener {
+                        if(it.isSuccessful)
+                        {
+                            Toast.makeText(context, "Item Deleted", Toast.LENGTH_SHORT).show()
+                        }
+                        else
+                        {
+                            Toast.makeText(context, "There was a problem deleting the item", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+            val alert = dialogBuilder.create()
+            alert.setTitle("Confirmation")
+            alert.show()
+            alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.md_blue_900))
+            alert.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.WHITE)
+            alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.md_blue_900));
+            alert.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.WHITE)
+        }
+           // dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
+            //dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     private fun onItemGroupSelected(itemGroup: ItemGroup) {
@@ -125,6 +163,7 @@ class EditInventoryFragment(
 
         val searchView: SearchView = dialog.findViewById(R.id.dialog_searchview)
         val listView: ListView = dialog.findViewById(R.id.dialog_listview)
+     //   listView.posi
         val progressBar: ProgressBar = dialog.findViewById(R.id.dialog_progressbar)
         val header: TextView = dialog.findViewById(R.id.dialog_header)
 
@@ -140,8 +179,9 @@ class EditInventoryFragment(
                         searchView.setQuery("", false)
                         val adapter = ItemGroupListAdapter()
                         listView.adapter = adapter
+                       // val last=adapter.count-1
                         adapter.setOriginalList(it.data)
-
+                        //listView.getChildAt(last).setBackgroundColor(Color.CYAN)
                         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                             override fun onQueryTextSubmit(query: String?): Boolean {
                                 return false
@@ -216,7 +256,7 @@ class EditInventoryFragment(
             R.id.editinventory_imagebutton -> {
                 CropImage.activity().setGuidelines(CropImageView.Guidelines.ON)
                     .setAspectRatio(1, 1)
-                    .setRequestedSize(100, 100)
+                    .setRequestedSize(300, 300)
                     .start(context!!, this)
             }
             R.id.editinventory_done -> {

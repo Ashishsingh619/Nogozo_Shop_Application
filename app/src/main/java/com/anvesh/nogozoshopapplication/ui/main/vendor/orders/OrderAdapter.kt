@@ -56,12 +56,17 @@ class OrderAdapter(
         }
 
         if (orderList[position].delivery == "Yes") {
-            holder.customerPhoneTag.visibility = View.VISIBLE
-            holder.customerAddressTag.visibility = View.VISIBLE
+           // holder.customerPhoneTag.visibility = View.VISIBLE
+            //holder.customerAddressTag.visibility = View.VISIBLE
             holder.customerPhone.text = orderList[position].customerphone
             holder.customerAddress.text = orderList[position].customeraddress
         }
+        else
+        {
+            holder.customerPhone.text = orderList[position].customerphone
+            holder.customerAddress.text = orderList[position].customeraddress
 
+        }
         //items stored in map under each order
         var items = ""
         for ((key, values) in orderList[position].items) {
